@@ -29,7 +29,7 @@ with open('auto-punct/mini-corpus.txt', 'r') as corpus:
         if i % 1000 == 0:
             print(i)
     train_data = [{'id': 1, 'paragraphs': paragraphs}]
-    train_data = json.dumps(train_data), open('train-data.json', 'w+'), indent=2)
+    json.dump(train_data), open('train-data.json', 'w+'), indent=2)
 
     paragraphs = []
     for (i, line)  in zip(range(N-N_train), data[N_train:]):
