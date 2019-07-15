@@ -9,7 +9,7 @@ def ner(token):
     else:
         return 'NONECAP'
 
-with open('auto-punct/mini-corpus.txt', 'r') as corpus:
+with open('mini-mini-corpus.txt', 'r') as corpus:
     data = corpus.read().split('\n')
     shuffle(data)
 
@@ -29,7 +29,7 @@ with open('auto-punct/mini-corpus.txt', 'r') as corpus:
         if i % 1000 == 0:
             print(i)
     train_data = [{'id': 1, 'paragraphs': paragraphs}]
-    json.dump(train_data), open('train-data.json', 'w+'), indent=2)
+    json.dump(train_data, open('train-data.json', 'w+'), indent=2)
 
     paragraphs = []
     for (i, line)  in zip(range(N-N_train), data[N_train:]):
@@ -40,5 +40,7 @@ with open('auto-punct/mini-corpus.txt', 'r') as corpus:
             sentences.append({'orth': token.lower(), 'ner': ner(token), 'id': id})
             id += 1
         paragraphs.append({'raw': raw, 'sentences': sentences})
+        if i%1000 == 0:
+            print(i)
     dev_data = [{'id': 1, 'paragraphs': paragraphs}]
     json.dump(dev_data, open('dev-data.json', 'w+'), indent=2)

@@ -22,7 +22,8 @@ for file in FILES:
             N = len(sentences)
 
             for i in range(0, N-4, 2):
-                sen = re.sub(' +', ' ', ' .'.join(sentences[i:i+4]) + ".")
+                sen = re.sub(' +', ' ', '. '.join(sentences[i:i+4]) + ".")
+                sen = sen.replace("“", "\"").replace("”", "\"").replace("’", "\'")
                 if len(sen) < 50 or len(sen) > 800:
                     continue
                 corpus.append(sen)
