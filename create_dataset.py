@@ -9,7 +9,7 @@ def ner(token):
     else:
         return 'NONECAP'
 
-with open('mini-mini-corpus.txt', 'r') as corpus:
+with open('mini-corpus.txt', 'r') as corpus:
     data = corpus.read().split('\n')
     shuffle(data)
 
