@@ -84,8 +84,8 @@ def correct(text, punct_model, caps_model):
 # Parse arguments
 parser = argparse.ArgumentParser(description='Fix text punctuation in your text.')
 parser.add_argument('filename', action='store')
-parser.add_argument('--punct-model',  metavar='',action='store', help='path/to/punct/model')
-parser.add_argument('--caps-model', metavar='', action='store', help='path/to/caps/model')
+parser.add_argument('--punct-model',  default='punct-model', metavar='',action='store', help='path/to/punct/model')
+parser.add_argument('--caps-model', default='caps-model', metavar='', action='store', help='path/to/caps/model')
 parser.add_argument('--output-file', metavar='', action= 'store', help='Specify a filename to store the output')
 
 args = vars(parser.parse_args())
