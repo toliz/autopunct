@@ -1,4 +1,4 @@
-# auto-punct
+# autopunct
 This is a tool for auto correction in the punctuation and capitalization of text, based on [spaCy](https://spacy.io/) library. You can retrain this tool in your own data or use the pretrained models.
 
 ## Prerequisites
