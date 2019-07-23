@@ -81,23 +81,24 @@ def correct(text, punct_model, caps_model):
 
     return text
 
-# Parse arguments
-parser = argparse.ArgumentParser(description='Fix text punctuation in your text.')
-parser.add_argument('filename', action='store')
-parser.add_argument('--punct-model',  default='punct-model', metavar='',action='store', help='path/to/punct/model')
-parser.add_argument('--caps-model', default='caps-model', metavar='', action='store', help='path/to/caps/model')
-parser.add_argument('--output-file', metavar='', action= 'store', help='Specify a filename to store the output')
+if __name__ == '__main__':
+    # Parse arguments
+    parser = argparse.ArgumentParser(description='Fix text punctuation in your text.')
+    parser.add_argument('filename', action='store')
+    parser.add_argument('--punct-model',  default='punct-model', metavar='',action='store', help='path/to/punct/model')
+    parser.add_argument('--caps-model', default='caps-model', metavar='', action='store', help='path/to/caps/model')
+    parser.add_argument('--output-file', metavar='', action= 'store', help='Specify a filename to store the output')
 
-args = vars(parser.parse_args())
+    args = vars(parser.parse_args())
 
-filename = args['filename']
-with open(filename, 'r') as file:
-    text = file.read()
+    filename = args['filename']
+    with open(filename, 'r') as file:
+        text = file.read()
 
-text = correct(text, args['punct_model'], args['caps_model'])
+    text = correct(text, args['punct_model'], args['caps_model'])
 
-if args['output_file'] != None:
-    with open(args['output_file'], 'w+') as file:
-        file.write(text)
-else:
-    print(text)
+    if args['output_file'] != None:
+        with open(args['output_file'], 'w+') as file:
+            file.write(text)
+    else:
+        print(text)
