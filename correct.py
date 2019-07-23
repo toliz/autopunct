@@ -40,7 +40,7 @@ def correct(text, punct_model, caps_model):
             except IndexError:
                 acronym = False
 
-            if word.text[0] != '\'' and not acronym:
+            if word.text[0] != '\'' and not acronym and not word.text == 'n\'t':
                 refined += ' '
 
             if word.ent_type_ in symbols:
@@ -61,7 +61,7 @@ def correct(text, punct_model, caps_model):
         doc = caps(text)
 
         for word in doc:
-            if word.text in ',;:.?!' or word.text[0] == '\'':
+            if word.text in ',;:.?!' or word.text[0] == '\'' or word.text == 'n\'t':
                 refined += word.text
             elif word.ent_type_ == 'AllCaps':
                 refined += ' ' + word.text.upper()
